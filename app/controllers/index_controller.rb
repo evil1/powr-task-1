@@ -44,7 +44,7 @@ class IndexController < ApplicationController
         fileUpdateResult = helpers.insert_script_tags(getFileResult['content'])
         @response = fileUpdateResult['content']
         if fileUpdateResult['success'] == true
-          updateResult = helpers.update_file(userData['login'], token, fileContent, getFileResult['sha'])
+          updateResult = helpers.update_file(userData['login'], token, fileUpdateResult['content'], getFileResult['sha'])
           if updateResult['success'] == true
             @notice = 'File was successfully updated'
           else
