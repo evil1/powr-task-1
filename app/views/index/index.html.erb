@@ -1,0 +1,9 @@
+<h1>POWr home task</h1>
+
+<% if @current_user_id  %>
+  <p>You are logged in as <%= @current_user_name %></p>
+  <p>Click <a href="/logout">here</a> to logout</p>
+<% else %>
+  <p>You are NOT logged in</p>
+  <p>Click <a href="/login">here</a> to login via GitHub</p>
+<% end %>
