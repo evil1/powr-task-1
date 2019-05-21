@@ -22,4 +22,10 @@ The only required parameter is the `cliend_id`. For the purpose of storing GitHu
 under `config/initializers` and will put `client_id` and `secret` there. I will also include `public_repo` scope
 in order to have an access to user's public repos and implement the bonus task
 8. Created an `index_helper.rb` under `app/helpers` to put there all the miscellaneous functions
-9. Created a `login` action which will redirect user to GitHub's login page and add it to `routes.rb` 
+9. Created a `login` action which will redirect user to GitHub's login page and add it to `routes.rb`
+10. Created a `callback` action in `index` controller. Mapped it to `/oauth` url `routes.rb` which is a callback url for GitHub OAuth app
+11. Created a `github_access_token` helper in `index` helper. Function utilize `net/http`, performs a POST request to `https://github.com/login/oauth/access_token`
+in order to receive the `access_token` from OAuth API
+12. Created `get_user_details` method in `index` helper which retrieves user's details
+
+  
