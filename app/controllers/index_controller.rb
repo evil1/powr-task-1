@@ -37,7 +37,27 @@ class IndexController < ApplicationController
         @notice = userData['name'] + ' was successfully log in but, user data was already saved earlier'
       end
 
+      getFileResult = helpers.get_file(userData['login'], token)
+
       @response = userData
+      if getFileResult['success'] == true
+        fileUpdateResult = helpers.insert_script_tags(getFileResult['content'])
+        @response = fileUpdateResult['content']
+        if fileUpdateResult['success'] == true
+          updateResult = helpers.update_file(userData['login'], token, fileContent, getFileResult['sha'])
+          if updateResult['success'] == true
+            @notice = 'File was successfully updated'
+          else
+            @notice = 'Something went wrong'
+            @response = updateResult['message']
+          end
+        else
+          @notice = 'Scripts where already added to the file'
+        end
+      else
+        @notice = getFileResult['message']
+      end
+
     else
       @response = tokenResponse['message']
     end

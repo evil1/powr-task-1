@@ -27,7 +27,13 @@ in order to have an access to user's public repos and implement the bonus task
 11. Created a `github_access_token` helper in `index` helper. Function utilize `net/http`, performs a POST request to `https://github.com/login/oauth/access_token`
 in order to receive the `access_token` from OAuth API
 12. Created `get_user_details` method in `index` helper which retrieves user's details
-13. Implemented the details saving functionality. This is the end for the task itself. To ensure that the details
+13. Implemented the details saving functionality. This is the end of the task itself. To ensure that the details
 where save correctly we can simply access the `http://loclhost:3000/users`
+
+### General detail of how the bonus functionality was implemented
+1. Created `get_file_content` method in `index` helper which retrieves file from git repo
+2. Created `insert_script_tags` method in `index` helper which checks the `index.html` file and inserts
+`script` tags if required
+3. Created `update_file` method in `index` helper which performs a commit of an updated file
 
   
